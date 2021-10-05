@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import style from '../styles/components/Company.module.css'
 import Link from 'next/link'
-import Router from 'next/router'
 import Button from './Button'
 
 export default function Company({ company }) {
