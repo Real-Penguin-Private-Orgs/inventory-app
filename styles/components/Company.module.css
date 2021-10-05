@@ -1,0 +1,18 @@
+.company_card {
+    @apply max-w-sm rounded overflow-hidden shadow-lg my-6
+}
+.company_card_image {
+    @apply w-full
+}
+.company_card_text_content {
+    @apply px-6 py-4
+}
+.company_card_text_content .company_card_text_title {
+    @apply font-bold text-xl mb-2
+}
+.company_card_text_content .company_card_text_desc {
+    @apply text-gray-700 text-base
+}
+.company_card_btn_content {
+    @apply px-6 py-4
+}

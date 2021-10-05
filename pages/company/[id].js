@@ -1,9 +1,12 @@
-
+import  Head from 'next/head'
 
 export default function CompanyID({ company }) {
   return (
     <div>
-        
+        <Head>
+            <title>{company.name} | Inventory App</title>
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
     </div>
   )
 }
@@ -19,6 +22,12 @@ export async function getServerSideProps(context) {
         method: 'GET'
     })
     const company = await res.json()
+
+    if(!company) {
+      return {
+        notFound: true,
+      }
+    }
     
     return {
        props: {
