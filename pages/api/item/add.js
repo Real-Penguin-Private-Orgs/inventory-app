@@ -5,7 +5,9 @@ const prisma = new PrismaClient()
 const schema = yup.object().shape({
     name: yup.string().required().trim(),
     description: yup.string().required().trim(),
-    image: yup.string().url().trim().required()
+    image: yup.string().url().trim().required(),
+    company: yup.string().required().trim(),
+    quantity: yup.number()
 })
 
 /**
@@ -19,7 +21,9 @@ export default async function handler(req, res) {
         return schema.validate({
             name,
             description,
-            image
+            image,
+            company,
+            quantity
         }).catch((err) => {
             res.status(204).json(err)
         })
