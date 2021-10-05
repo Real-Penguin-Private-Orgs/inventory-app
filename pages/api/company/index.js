@@ -7,6 +7,7 @@ const prisma = new PrismaClient()
 * @param {import('next').NextApiResponse} res
 */
 export default async function handler(req, res) {
-   const items = await prisma.item.findMany()
-   res.status(200).json(items)
+    const companies = await prisma.company.findMany()
+    res.status(200).json(companies)
 }
+  
