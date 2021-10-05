@@ -20,7 +20,7 @@ export default function Company({ company }) {
         </div>
         <div className={style.company_card_btn_content}>
               <Link href="/company/[id]" as={`/company/${company.id}`}  passHref>
-                    <Button onClick={() => Router.push('/p/[id]', `/p/${post.id}`)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <Button>
                           Visit {company.name}
                       </Button>
               </Link>
