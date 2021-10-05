@@ -1,0 +1,47 @@
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id String @id @default(cuid())
+  email String @db.VarChar(255) @unique
+  username String
+  password String
+  createdAt DateTime @default(now())
+  items Item[]
+}
+
+model ItemType {
+   id Int @id @default(autoincrement())
+   name String @db.VarChar(255)
+   item Item @relation(fields: [at_item], references: [id])
+   at_item String
+}
+
+model Item {
+    id String @id @default(cuid())
+    name String
+    user User @relation(fields: [user_id], references: [id])
+    user_id String
+    company Company @relation(fields: [company_id], references: [id])
+    company_id String @unique
+    itemTypeID ItemType[]
+    description String @db.Text
+    itemImage String
+    quantity Int @default(0)
+}
+
+model Company {
+   id String @id @default(cuid())
+   name String
+   logo_url String 
+   description String @db.Text
+   website_url String?
+   email String?
+   product Item[]
+}
