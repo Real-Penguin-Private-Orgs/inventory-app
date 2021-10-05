@@ -14,7 +14,7 @@ const schema = yup.object().shape({
 * @param {import('next').NextApiResponse} res
 */
 export default async function handler(req, res) {
-    const { name, description, image } = req.body;
+    const { name, description, image, quantity, company } = req.body;
     if(!name || !description || !image) {
         return schema.validate({
             name,
@@ -25,6 +25,20 @@ export default async function handler(req, res) {
         })
     }
 
+    const newItem = await prisma.item.create({
+        data: {
+            name: name,
+            itemImage: image,
+            description: description,
+            quantity: quantity,
+            company: {
+                connect: {
+                    id: company
+                }
+            }
+        }
+    })
     
+    res.json(newItem)
 }
   
