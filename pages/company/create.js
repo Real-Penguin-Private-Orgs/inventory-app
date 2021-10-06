@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+import Button from "../../components/Button"
 import Container from "../../components/Container"
 import Form from "../../components/Form"
 import Input from "../../components/Input"
@@ -12,8 +14,19 @@ export default function Create() {
         email: ''
     })
 
+    const validation = () => {
+        if(!data.name || !data.description || data.logo) {
+            return false
+        }
+        return true;
+    }
+
     const handleSubmit = (e) => {
-      e.preventDefault()
+        e.preventDefault()
+        const isValid = validation()
+        if(isValid) {
+            console.log(e.target.value)
+        }
     }
 
     return (
@@ -40,6 +53,34 @@ export default function Create() {
                                   value={data.description}
                                   onChange={setData}
                               />
+                          </div>
+                          <div className="ml-2 mb-4">
+                              <Input 
+                                  type="email" 
+                                  name="email" 
+                                  id="nameInput"
+                                  placeholder="Company Support Email"
+                                  value={data.email}
+                                  onChange={setData}
+                              />
+                              
+                          </div>
+                          <div className="ml-2 mb-4">
+                                <Input 
+                                    type="url" 
+                                    name="logo" 
+                                    id="nameInput"
+                                    placeholder="Company Logo"
+                                    value={data.logo}
+                                    onChange={setData}
+                                />
+                                <div id="output">
+                                        <span>Output</span>
+                                        <img src={data.logo} alt=""/>
+                                </div>
+                          </div>
+                          <div className="ml-2 mb-4">
+                              <Button type="submit">Create</Button>
                           </div>
                   </Form>
             </Container>
