@@ -11,7 +11,7 @@ model Item {
     id String @id @default(cuid())
     name String
     company Company @relation(fields: [company_id], references: [id])
-    company_id String @unique
+    company_id String
     description String @db.Text
     itemImage String
     quantity Int @default(0)
