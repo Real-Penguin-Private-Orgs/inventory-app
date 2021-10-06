@@ -32,7 +32,9 @@ async function getOne(companyID, res, products) {
             description: true,
             products: {
                 select: {
+                    id: true,
                     name: true,
+                    description: true,
                     itemImage:  true
                 }
             }

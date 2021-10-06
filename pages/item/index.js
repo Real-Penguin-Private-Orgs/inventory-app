@@ -1,6 +1,6 @@
 import Item from '../../components/Item'
 
-export default function Food({ items, company }) {
+export default function Food({ items }) {
   return (
     <div>
         {items.map((item) => (
