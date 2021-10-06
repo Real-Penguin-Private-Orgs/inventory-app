@@ -18,10 +18,24 @@ export default async function handler(req, res) {
 }
 
 
-async function getOne(companyID, res) {
+async function getOne(companyID, res, products) {
     const company = await prisma.company.findUnique({
         where: {
             id: companyID
+        },
+        select: {
+            id: true,
+            name: true,
+            logo_url: true,
+            website_url: true,
+            email: true,
+            description: true,
+            products: {
+                select: {
+                    name: true,
+                    itemImage:  true
+                }
+            }
         }
     })
     res.json(company)

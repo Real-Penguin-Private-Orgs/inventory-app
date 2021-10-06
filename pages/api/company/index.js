@@ -7,7 +7,22 @@ const prisma = new PrismaClient()
 * @param {import('next').NextApiResponse} res
 */
 export default async function handler(req, res) {
-    const companies = await prisma.company.findMany()
+    const companies = await prisma.company.findMany({
+        select: {
+            id: true,
+            name: true,
+            logo_url: true,
+            website_url: true,
+            email: true,
+            description: true,
+            products: {
+                 select: {
+                     name: true,
+                     itemImage:  true
+                 }
+            }
+        }
+    })
     res.status(200).json(companies)
 }
   
