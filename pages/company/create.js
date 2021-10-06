@@ -9,6 +9,11 @@ export default function Create() {
         logo: '',
         email: ''
     })
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+    }
+
     return (
       <div>
             <Container>
