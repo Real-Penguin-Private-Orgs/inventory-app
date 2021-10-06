@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
-export default function Item({ item }) {
+export default function Item({ item, company }) {
 
 
     return (
@@ -24,7 +23,7 @@ export default function Item({ item }) {
                      {item.description}
               </p>
               <div className='flex text-gray-700 text-sm '>
-                  <div>Owned by <span className="text-red-400">{item.company_id}</span></div>
+                  <div>Owned by <span className="text-red-400">{company.name}</span></div>
               </div>
           </div>
       </div>
