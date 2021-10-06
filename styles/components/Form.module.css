@@ -1,0 +1,9 @@
+.form_container {
+    @apply p-8 justify-center items-center h-screen flex
+}
+.form_flex {
+    @apply flex
+}
+.form_input_group {
+    @apply bg-gray-200 shadow-inner rounded-l p-2 flex-1
+}
