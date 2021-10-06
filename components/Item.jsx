@@ -8,12 +8,14 @@ export default function Item({ item }) {
       <div className="md:flex md:-mx-4">
       <div className="w-full mb-2 md:w-1/2 md:mx-4 border rounded shadow-sm">
           <a lassName="mb-4">
-              <img className="rounded" src={item.itemImage} alt="" width={300} height={300} />
+              <Link href="/item/[id]" as={`/item/${item.id}`} passHref>
+                        <img className="rounded cursor-pointer" src={item.itemImage} alt={`item-${item.id}-img`} width={300} height={300} />
+              </Link>
           </a>
           <div className="px-4 py-4">
               <div>
                 <Link href="/item/[id]" as={`/item/${item.id}`} passHref>
-                    <span className="font-semibold leading-tight text-2xl text-gray-800 hover:text-gray-800">
+                    <span className="font-semibold leading-tight text-2xl text-gray-800 hover:text-gray-800 cursor-pointer">
                         {item.name}
                     </span>
                 </Link>
@@ -23,7 +25,14 @@ export default function Item({ item }) {
                      {item.description}
               </p>
               <div className='flex text-gray-700 text-sm '>
-                  <div>Owned by <span className="text-red-400">{item.company.name}</span></div>
+                  <div>
+                     <span className="mr-1"> Owned by</span>
+                      <Link href="/company/[id]" as={`/company/${item.company.id}`} passHref>
+                        <span className="text-red-400 cursor-pointer flex-row">
+                            {item.company.name}
+                        </span>
+                    </Link>
+                  </div>
               </div>
           </div>
       </div>
